@@ -16,7 +16,7 @@ def login_view(request):
             messages.error(request,"password cannot be empty")
             is_valid =False
         #authentication user
-         if is_valid:
+        if is_valid:
             user = authenticate(
                 request,
                 username=username,
@@ -30,13 +30,13 @@ def login_view(request):
                 messages.error(request,"login failed")
     return render(request,"accouts/login.html")            
 #register
-def register_view(request)
+def register_view(request):
     form =UserCreationForm(request.Post or None)
-    if form.is_valid()
+    if form.is_valid():
         form.save()
         messages.success(request,"account created successfully")
         return redirect('login')
-    return render(request,'accounts/register.html',{'form':from})        
+    return render(request,'accounts/register.html',{'form':form})        
     
 #logout
 def logout_view(request):
