@@ -3,6 +3,9 @@ class Collection(models.Model):
     name = models.CharField( max_length=50)
     desc = models.TextField()
     image = models.ImageField( upload_to="Collection", blank=True,null=True)
+    def __str__(self):
+        return self.name
+
 class Product (models.Model):
     food_choices=(
         (0, 'egg'),
