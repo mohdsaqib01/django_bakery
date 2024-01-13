@@ -31,7 +31,7 @@ def login_view(request):
     return render(request,"accouts/login.html")            
 #register
 def register_view(request):
-    form =UserCreationForm(request.Post or None)
+    form =UserCreationForm(request.POST or None)
     if form.is_valid():
         form.save()
         messages.success(request,"account created successfully")

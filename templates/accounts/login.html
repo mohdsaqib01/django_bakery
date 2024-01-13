@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %} 
+{% load static %}
+{% block title %}login {% endblock %}
+
+{% block css %}
+ <link rel="stylesheet" href=" {% static 'css/login.css' %}"> 
+{% endblock css %}
+  
+{% block content %}
+<div class="left">
+  <div class="card">
+    <div class="card-body">
+    <h1>login</h1>
+    <p class="fs-5">access your account</p>
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="username" class="form-label">username</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          name="username"
+          id="username"
+          aria-describedby="usernamehelpID"
+          placeholder="john@cena.com"
+        />
+        <small id="helpId" class="form-text text-muted">Help text</small>
+      </div>
+      
+    </form>
+    </div>
+  </div>
+</div>
+<div class="right">
+  <img src="{% static 'images/thumb-1920-1056724.jpg' %}" alt="">
+</div>
+{% endblock %}
+        
+        
+    
