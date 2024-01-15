@@ -28,7 +28,7 @@ def login_view(request):
                 return redirect('home')
             else:
                 messages.error(request,"login failed")
-    return render(request,"accouts/login.html")            
+    return render(request,"accounts/login.html")            
 #register
 def register_view(request):
     form =UserCreationForm(request.POST or None)
@@ -42,5 +42,5 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request,"logout successful")
-    return redirect('login')
+    return redirect('home')
 

@@ -1,12 +1,110 @@
- {% extends 'layout/base.html' %} 
-    {% load static %}
-    {% block title %}
-      home 
-    {% endblock %}
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}
+home
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+  <div class="row">
+    <div class="col">
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="https://cdn.shopify.com/s/files/1/0521/3929/4884/files/Crumble_Brownie__Web_banners-01.jpg"
+              alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://cdn.shopify.com/s/files/1/0521/3929/4884/files/Crumble_Brownie__Web_banners-01.jpg"
+              alt="">
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0521/3929/4884/files/241123_Strawberry_Website_Banner_01_220729_Rakhi_Website_Banner_copy_12.jpg?"
+              alt="">
+          </div>
+          ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="container-fluid py-5" style="background-color: rgba(236, 127, 10, 0.895);">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">Our Collection</h2>
+      <div class="container py-2 my-3">
+        <div class="row">
+        {% for item in collections  %}
+          <div class="col-md-3 text-center">
+            <img src="{{item.image.url}}" alt="{{item.name}}" class="img-fluid rounded-circle">
+            <a href="#" class="text-centerfs-2 fw-bold text-decoration-none"{{item.name}}></a>
+          </div>
+        {% empty %}
     
-    {% block content %}
-        
-    {% endblock %}
-        
-        
-    
+        {% endfor %}
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"
+  integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+
+    },
+    autoplay: {
+      delay: 500,
+    },
+    effect: 'cube'
+  });
+</script>
+{% endblock js %}
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+  integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  .swiper {
+    width: 100%;
+    background-color: lawngreen;
+  }
+  .swiper{
+    overflow: hidden;
+  }
+  .swiper-slide>img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+</style>
+{% endblock css %}
