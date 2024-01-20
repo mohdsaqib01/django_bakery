@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+{% load static  %} 
+
+
+{% block title %}
+    collections
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid py-5" style="background-color: rgba(236, 127, 10, 0.895);">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center">Our Collection</h2>
+        <div class="container py-2 my-3">
+          <div class="row">
+          {% for item in collections  %}
+            <div class="col-md-3 text-center">
+              <a href="{% url 'collection_detail' item.id %}">
+              <img src="{{item.image.url}}" alt="{{item.name}}" class="img-fluid rounded-circle">
+            </a>
+              <a href="#" class="text-centerfs-2 fw-bold text-decoration-none"{{item.name}}></a>
+            </div> {% endfor %}
+        
+          </div>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+    
+    

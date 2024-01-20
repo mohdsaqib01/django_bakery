@@ -11,7 +11,7 @@ class Product (models.Model):
         (0, 'egg'),
         (1, 'eggless')
     )
-    Collection = models.ForeignKey(Collection, on_delete=models.CASCADE, default=1)
+    collection = models.ForeignKey(Collection, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=50)   
     image = models.ImageField( upload_to="product")
     price = models.PositiveIntegerField(default=50)

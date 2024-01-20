@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 {% load static %}
 {% block title %}
-home
+ home
 {% endblock %}
 
 {% block content %}
@@ -42,7 +42,7 @@ home
     </div>
   </div>
 </div>
-<div class="container-fluid py-5" style="background-color: rgba(236, 127, 10, 0.895);">
+<div class="container-fluid py-5" >
   <div class="row">
     <div class="col">
       <h2 class="text-center">Our Collection</h2>
@@ -50,12 +50,18 @@ home
         <div class="row">
         {% for item in collections  %}
           <div class="col-md-3 text-center">
+            <a href="{% url 'collection_detail' item.id %}">
             <img src="{{item.image.url}}" alt="{{item.name}}" class="img-fluid rounded-circle">
+          </a>
             <a href="#" class="text-centerfs-2 fw-bold text-decoration-none"{{item.name}}></a>
           </div>
         {% empty %}
     
         {% endfor %}
+        <div class="col text-center">
+          <a href="{% url 'collection_all' %}" class="btn btn-outline-dark btn-lg">View All</a>
+        </div>
+
       </div>
 
       </div>

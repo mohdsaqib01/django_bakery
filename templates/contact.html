@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="email" class="form-label">email</label>
+                    <input type="email" class="form-control form-control-sm" name="email" id="email"
+                        aria-describedby="helpId" placeholder="Contact email" />
+                    <small id="helpId" class="form-text text-muted">We will not spam you</small>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label"> Full Name</label>
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
+                        placeholder="your name" />
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">message</label>
+                    <input type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="" />
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

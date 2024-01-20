@@ -1,0 +1,89 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{collection}}
+{% endblock %}
+
+{% block css %}
+
+{% endblock css %}
+
+
+
+{% block content %}
+<div class="container-fluid px-0 mx-0">
+    <div class="row mx-0">
+        <div class="col text-center px-0">
+
+            <h1 class="display-4 fw-bold"> All Products</h1>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Collections</h3>
+            <!-- Some borders are removed -->
+            <ul class="list-group list-group-flush">
+                {% for col in collections %}
+                <li class="list-group-item">
+                    <a href=" {% url 'collection_detail' col.id %}" class="nav-link"> &rightarrow;{{col.name}}</a>
+                </li>
+
+
+
+                {% endfor %}
+
+            </ul>
+
+
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="container-fluid my-5">
+                <div class="row">
+
+                    {% for prd in products %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="{% url 'product_detail' prd.id %}" class="text-decoration-nine">
+
+                            <img src="{{prd.image.url}}" alt="" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h3>
+                                <a href="{% url 'product_detail' prd.id %}" class="text-decoration-none">
+                                {{prd.name|truncatechars:15}}
+                                </a>
+                                </h3>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-bold my-1">RS.{{prd.price}}</p>
+                                    <div class="">
+                                        <a href="{% url 'product_detail' prd.id %}" class="btn btn-outline-success btn-sm"> 
+                                            View
+                                        </a> 
+                                    <a hx-get="{% url 'add_to_cart' prd.id %}" class="btn btn-outline-success btn-sm"> add to cart</a>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="alert alert-wgarnin" role="alert">
+                        <strong> no product available</strong> check later
+                    </div>
+
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
