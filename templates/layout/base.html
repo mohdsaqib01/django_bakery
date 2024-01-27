@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <header>
         {% include 'components/nav.html' %}
         <!-- place navbar here -->
